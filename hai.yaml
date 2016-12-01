@@ -1,0 +1,94 @@
+swagger: '2.0'
+info:
+  version: '0.0.1'
+  title: yaml test of HAI
+  description: 測試
+  # termsOfService: http://helloreverb.com/terms/
+  contact:
+    name: YD
+    email: aady5566@gmail.com
+    # url: http://swagger.io
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+host: petstore.swagger.io
+basePath: /api
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /partners:
+    get:
+      description: Data from after choosing 'Reporter', 'HS2' and 'Partner' 'Partner' )
+      operationId: findPartners
+      produces:
+        - application/json
+        - application/xml
+        - text/xml
+        - text/html
+      parameters:
+        - name: reporter
+          in: query
+          description: filter by reporter
+          required: true
+          type: string
+        - name: hs2
+          in: query
+          description: filter by hs2
+          required: true
+          type: integer
+          format: int32
+        - name: partner
+          in: query
+          description: filter by partner
+          required: true
+          type: string
+        - name: value
+          in: query
+          description: trade value
+          required: false
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: partner response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/partner'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/errorModel'
+definitions:
+  partner:
+    type: object
+    required:
+      - reporter
+      - hs2
+      - partner
+    properties:
+      reporter:
+        type: string
+      hs2:
+        type: integer
+        format: int32
+      partner:
+        type: string
+      value:
+        type: integer
+        format: int64
+  errorModel:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
