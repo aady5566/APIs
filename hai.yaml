@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  version: '0.0.1'
+  version: '0.0.2'
   title: yaml test of HAI
-  description: 測試
+  description: 測試 json 通用 template (e.g. data = [{'a':[1,2,3],b:["ss","rrt"]},{'a':[1,2,3],b:["ss","rrt"]}])
   # termsOfService: http://helloreverb.com/terms/
   contact:
     name: YD
@@ -11,7 +11,7 @@ info:
   license:
     name: MIT
     url: http://opensource.org/licenses/MIT
-host: petstore.swagger.io
+host: localhost:8080
 basePath: /api
 schemes:
   - http
@@ -39,8 +39,7 @@ paths:
           in: query
           description: filter by hs2
           required: true
-          type: integer
-          format: int32
+          type: string
         - name: partner
           in: query
           description: filter by partner
@@ -74,13 +73,15 @@ definitions:
       reporter:
         type: string
       hs2:
-        type: integer
-        format: int32
+        type: string
       partner:
         type: string
       value:
         type: integer
         format: int64
+      year:
+        type: string
+        format: date
   errorModel:
     type: object
     required:
