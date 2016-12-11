@@ -22,7 +22,7 @@ produces:
 paths:
   /partners:
     get:
-      description: Data from after choosing 'Reporter', 'HS2' and 'Partner' 'Partner' )
+      description: Data from after choosing 'Reporter', 'HS2' and 'Partner'
       operationId: findPartners
       produces:
         - application/json
@@ -45,12 +45,6 @@ paths:
           description: filter by partner
           required: true
           type: string
-        - name: value
-          in: query
-          description: trade value
-          required: false
-          type: integer
-          format: int64
       responses:
         '200':
           description: partner response
